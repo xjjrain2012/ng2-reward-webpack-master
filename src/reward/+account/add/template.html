@@ -1,0 +1,47 @@
+<div class="zs-main reward-account">
+	<div class="zs-header clearfix">
+		<div class="fl">
+			<i class="zs-ico-reward"></i>奖励
+		</div>
+	</div>
+	<div class="zs-body">
+		<div class="zs-body-main zs-border">
+			<div class="ra-crumbs">
+				<a [routerLink]="['/']">返回奖励</a> ＞ <a [routerLink]="['/account/list']">核验子账号设置</a> ＞ 创建子账号
+			</div>
+			<form class="" (ngSubmit)="onSubmit()">
+
+			<div class="ra-form">
+				<div class="ra-fields">
+					<label for="">
+						<div><span class="text-danger">*</span>账号名称 <span hidden>＋从员工账号中添加</span></div>
+						<input type="text" ngControl="name"  maxlength="50" required [(ngModel)]="subAccount.cRCUName">
+					</label>
+				</div>
+				<div class="ra-fields">
+					<label for="">
+						<div><span class="text-danger">*</span>登录邮箱</div>
+						<input type="text" ngControl="email" maxlength="100" pattern="^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$" required [(ngModel)]="subAccount.cRCUEmail">
+					</label>
+				</div>
+				<div class="ra-fields">
+					<label for="">
+						<div><span class="text-danger">*</span>登录密码</div>
+						<input type="password" ngControl="password"  maxlength="100" [(ngModel)]="subAccount.cRCUPassword">
+					</label>
+				</div>
+				<div class="ra-fields">
+					<label for="">
+						<div><span class="text-danger">*</span>确认密码</div>
+						<input type="password"  maxlength="100" [(ngModel)]="checkPwd">
+					</label>
+				</div>
+				<div class="ra-fields">
+					<button type="submit" class="ra-fields-btn ra-fields-submit"><span>创建</span></button>
+					<button type="reset" (click)="toHome()" class="ra-fields-btn ra-fields-cancel"><span>取消</span></button>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

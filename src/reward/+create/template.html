@@ -1,0 +1,26 @@
+<div class="reward-create">
+	<div class="zs-bar tc">
+		<a [routerLink]="['/']" class="zs-back"></a>
+		创建奖励方案
+	</div>
+	<div class="rd-main">
+		{{errorMessage}}
+		<div class="rd-mid zs-border clearfix rc-main">
+			<div class="rd-types fl">
+				<div class="title">选择奖励的类型</div>
+				<div class="types">
+					<div class="type" (click)="onSelect(item)" [ngClass]="{'type-check':item.isChecked,'type-disable':item.status===0}" *ngFor="let item of list" >
+						<i [class]="item.ico"></i>
+						<div>{{item.name}}</div>
+					</div>
+				</div>
+				<a (click)="redirectTo()" class="rd-btn">创建</a>
+			</div>
+			<div class="rd-preview fr">
+				<img src="/rewardredirect/reward/images/rd_show.png" *ngIf="type===1" alt="">
+				<img src="/rewardredirect/reward/images/iphone-reward-2.png" *ngIf="type===2" alt="">
+				<img src="/rewardredirect/reward/images/iphone-reward-3.png" *ngIf="type===3" alt="">
+			</div>
+		</div>
+	</div>
+</div>

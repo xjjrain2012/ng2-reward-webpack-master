@@ -1,0 +1,244 @@
+<div class="reward-detail reward-detail-pin">
+	<div class="zs-bar tc">
+		<a [routerLink]="['/']" class="zs-back"></a>
+		{{info?.cRPName}}
+		<span class="pull-right state-btn" [class.state-btn-stop]="info?.cRPStatus!=1" (click)="onState()">{{info?.cRPStatus==1?'发放中':'暂停中'}}</span>
+		<a class="pull-right del-btn" (click)="onDelete()"></a>
+		<a class="pull-right edit-btn" *ngIf="!info?.cRPExchangeType" [routerLink]="['/pin/edit',{id:id,state:info?.cRPStatus}]"></a>
+		<a class="pull-right edit-btn" *ngIf="info?.cRPExchangeType" [routerLink]="['/baccarat/edit',{id:id,state:info?.cRPStatus}]"></a>
+	</div>
+	<div class="rd-main">
+		<div class="rx-col">
+			<div class="zs-border rx-main">
+				<h1>明细查询</h1>
+				<div class="rx-search re-rule">
+					<div class="rx-condition">
+						<div class="rx-cond-label">发放日期</div>
+						<div class="th-datepicker-block re-rule-pin">
+							<div class="rd-btn" [class.active]="prizesParams.range=='-1'" (click)="onSetRange('-1')">全部</div>
+							<div class="s-input tc th-datepicker-range " (click)="onShowDate($event)">
+								<input type="text" readonly  name="name" class="inputtxt" [value]="(prizesParams.startDate||'')+'~'+(prizesParams.endDate||'')" style="width:170px" value="">
+								<div class="tc th-datepicker-tip" (click)="$event.stopPropagation()" *ngIf="dateShow" >
+									<div class="th-datepicker" >
+										<datepicker [ngModel]="prizesParams.startDate" (ngModelChange)="prizesParams.startDate = moment($event)"   [showWeeks]="true"></datepicker>
+									</div>
+									<div class="th-datepicker">
+										<datepicker [ngModel]="prizesParams.endDate" (ngModelChange)="prizesParams.endDate = moment($event)" [showWeeks]="true"></datepicker>
+									</div>
+								</div>
+								<div *ngIf="timeError" style="height: 30px;line-height: 30px;" class="text-danger">结束时间大于开始时间</div>
+							</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='7'" (click)="onSetRange('7')">本周</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='30'" (click)="onSetRange('30')">本月</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='90'" (click)="onSetRange('90')">本季度</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='currentYear'" (click)="onSetRange('currentYear')">本年度</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='nextYear'" (click)="onSetRange('nextYear')">下年度</div>
+						</div>
+
+					</div>
+					<!-- <div class="rx-condition">
+						<div class="rx-cond-label">发放状态</div>
+						<div>
+							<div class="rd-btn" [class.active]="prizesParams.sendStatus==0" (click)="prizesParams.sendStatus=0;prizesParams.verifyStatus=0;">全部</div>
+							<div class="rd-btn" [class.active]="prizesParams.sendStatus==1" (click)="prizesParams.sendStatus=1;prizesParams.verifyStatus=0;">未发放</div>
+							<div class="rd-btn" [class.active]="prizesParams.sendStatus==2" (click)="prizesParams.sendStatus=2">已发放</div>
+						</div>
+					</div> -->
+					<div class="rx-condition" >
+						<div class="rx-cond-label">兑换状态</div>
+						<div>
+							<div class="rd-btn" [class.active]="prizesParams.verifyStatus==0" (click)="prizesParams.verifyStatus=0">全部</div>
+							<div class="rd-btn" [class.active]="prizesParams.verifyStatus==1" (click)="prizesParams.verifyStatus=1">未兑换</div>
+							<div class="rd-btn" [class.active]="prizesParams.verifyStatus==2" (click)="prizesParams.verifyStatus=2">已兑换</div>
+						</div>
+					</div>
+					<div class="rx-condition">
+						<div class="rx-cond-label">关联项目</div>
+						<div>
+							<div class="s-input">
+								<select [(ngModel)]="prizesParams.projectId">
+									<option [value]="pl.cPId" *ngFor="let pl of projectsList">{{pl.cPName}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="rx-condition" *ngIf="info?.cRPExchangeType">
+						<div class="rx-cond-label">奖品筛选</div>
+						<div>
+							<div class="s-input">
+								<select [(ngModel)]="prizesParams.cRPDId">
+									<option value="0">全部</option>
+									<option [value]="si.cRPDId" *ngFor="let si of info?.subInfo">{{si.cRPDName}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="rx-cond-op">
+						<button class="rd-btn" (click)="onSearch()">查找</button>
+					</div>
+				</div>
+				<div class="rx-list">
+					<table class="table">
+						<caption>
+							数据列表
+							<a target="_blank" [href]="onDownload()" class="zs-btn-export fr">导出数据</a>
+						</caption>
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>兑换核验码</th>
+								<th *ngIf="info?.cRPExchangeType">奖品名称</th>
+								<th>发放状态</th>
+								<th>兑换状态</th>
+								<th>发放时间</th>
+								<th colspan="2">发放来源
+									<div class="zs-b-des">
+										<i></i>
+										<div>
+											此处显示的是获奖链接的原始部署对象，如门店、员工或商品。
+										</div>
+									</div>
+								</th>
+								<th>获奖手机号</th>
+								<th>兑换时间</th>
+								<th>核验人</th>
+							</tr>
+						</thead>
+						<tbody *ngIf="pinList">
+							<tr *ngFor="let psl of pinList;let i = index;">
+								<td>{{i+1}}</td>
+								<td>{{psl.cRCode}}</td>
+								<td *ngIf="info?.cRPExchangeType">{{psl.cRPrizeName}}</td>
+								<td>{{psl.cRStatus!==0?'已发放':'-'}}</td>
+								<td>{{psl.cRStatus===2?'已兑换':'未兑换'}}</td>
+								<td>{{moment(psl.cRSendTime,'YYYY-MM-DD HH:mm')}}</td>
+								<td>{{psl.groupName}}</td>
+								<td>{{psl.entityName}}</td>
+								<td>{{psl.cRMobile||'-'}}</td>
+								<td>{{moment(psl.cRVerifyTime,'YYYY-MM-DD HH:mm')}}</td>
+								<td>{{psl.userName||'-'}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="rx-list-empty tc c-pink" *ngIf="!pinList?.length">
+						未查找到有效数据
+					</div>
+					<pagination (pageChanged)="pageChanged($event)" [totalItems]="pageCount" [(ngModel)]="currentPage" [itemsPerPage]="pageSize" class="pagination-sm"
+                [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event" firstText="首页" lastText="结束页" previousText="上一页" nextText="下一页"></pagination>
+				</div>
+			</div>
+			<div class="zs-border rx-side">
+				<div class="s-header tc">
+					<h1>{{info?.cRPName}}</h1>
+					<p>创建时间<span>{{moment(info?.cRPCreateDate)}}</span></p>
+				</div>
+				<div class="s-items">
+					<div class="s-item" *ngFor="let tl of totalList">
+						<div>
+							<span>{{info?.cRPExchangeType?tl.cRPDName+'数量':'核验码总量'}}</span>
+							<span class="c-blue">{{tl.totalNum}}</span>
+							<!-- <span class="s-ico s-ico-add" title="追加核验码" (click)="tl.addTotalShow=!tl.addTotalShow"></span> -->
+						</div>
+						<!-- <div class="re-form" *ngIf="tl.addTotalShow&&checkUploadFile()">
+							<div class="advance advance-show" style="margin:0;" *ngIf="!tl.uploadFileXls?.error">
+								<div class="re-upload">
+									<div  class="re-upload">
+										<input type="file" name="fileName" [ng-file-select]="fileOptions" (onUpload)="handleFileUpload($event,tl)" >
+										<div class="rd-btn">选择文件</div>
+										<div class="re-progress clearfix" *ngIf="tl.fileProgress">
+											<div >
+												<span></span>
+												<div class="re-progress-bar">
+													<div [ngStyle]="{ 'width': tl.fileProgress + '%' }"></div>
+												</div>
+												<span>{{tl.fileProgress + '%'}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="re-tip">请下载模板文件，按照要求上传导入码库</div>
+							</div>
+							<div class="advance advance-result advance-suc" style="margin:0;" *ngIf="tl.uploadFileXls?.error?.state===0">
+								<div class="clearfix">
+									<span>已上传</span>
+									<span class="f-name">{{tl.uploadFileXls?.data.filePath}}</span>
+									<div  class="re-upload re-upload-op">
+										<input type="file" name="fileName"  [ng-file-select]="fileOptions" (onUpload)="handleFileUpload($event,tl)" >
+										<div class="upload-op">重新上传</div><div class="upload-op"  (click)="onDelFileName(tl)">删除</div>
+										<div class="re-progress clearfix" *ngIf="tl.fileProgress">
+											<div >
+												<span></span>
+												<div class="re-progress-bar">
+													<div [ngStyle]="{ 'width': tl.fileProgress + '%' }"></div>
+												</div>
+												<span>{{tl.fileProgress + '%'}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="re-tip">成功导入 {{tl.uploadFileXls?.data?.num}}个核验码</div>
+							</div>
+							<div class="advance advance-result advance-err" style="margin:0;" *ngIf="tl.uploadFileXls?.error?.state>0">
+								<div class="clearfix">
+									<span>{{tl.uploadFileXls?.error.msg}}</span>
+									<div  class="re-upload re-upload-op" >
+										<input type="file" name="fileName" [ng-file-select]="fileOptions" (onUpload)="handleFileUpload($event,tl)" >
+										<div class="upload-op">重新上传</div><div class="upload-op"  (click)="onDelFileName(tl)">删除</div>
+										<div class="re-progress clearfix" *ngIf="tl.fileProgress">
+											<div >
+												<span></span>
+												<div class="re-progress-bar">
+													<div [ngStyle]="{ 'width': tl.fileProgress + '%' }"></div>
+												</div>
+												<span>{{tl.fileProgress + '%'}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="re-tip">核验码需由字母和数字组合，6-12位</div>
+							</div>
+							<div class="" style="text-align: center;margin: 10px;">
+								<span class="rd-btn" (click)="onAddFile(tl)">确定</span><span class="upload-op" (click)="tl.addTotalShow=!tl.addTotalShow">取消</span>
+							</div>
+						</div>
+						<div class="add-total-block" *ngIf="tl.addTotalShow&&!checkUploadFile()">
+              <h5>追加核验码</h5>
+              <input type="text" style="width:100px;margin-right:10px;" autofocus="autofocus" class="inputtxt input-157" placeholder="1-100,000的数字" [(ngModel)]="tl.additionalNum" (keyup)="onEnterAddTotal($event,tl)">
+                <a class="rd-btn-inline" style="width:40px;" (click)="onAddTotal(tl)">确认</a>
+                <a class="rd-btn-link-inline" (click)="tl.additionalNum = '';tl.addTotalShow = 0;tl.addStatus = 0;tl.additionalNumError = 0;">取消</a>
+            </div>
+            <div class="alert alert-success add-total-tip" *ngIf="tl.addStatus==1">
+              新增成功!
+            </div>
+            <div class="alert alert-danger add-total-tip" *ngIf="tl.addStatus==2">
+              新增失败!
+            </div>
+						<div class="alert alert-danger add-total-tip" *ngIf="tl.additionalNumError">
+							输入不符合规则,请输入1~100,000的整数
+						</div> -->
+						<div>
+							<span>已发放数量</span>
+							<span class="c-green">{{tl.senderNum}}</span>
+							<a class="s-ico s-ico-down" target="_blank" [href]="onDoneDownload(tl.cRPDId)"></a>
+						</div>
+						<div>
+							<span>已兑换数量</span>
+							<span class="c-green">{{tl.verfiyNum}}</span>
+							<a class="s-ico s-ico-down" target="_blank" [href]="onExchangeDownload(tl.cRPDId)"></a>
+						</div>
+					</div>
+				</div>
+				<div class="s-rel">
+					<div class="s-rel-title">当前项目关联</div>
+					<div>
+						<a *ngFor="let cpl of curProjectsList">{{cpl.cPName}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rd-footer tc">
+			2006-2016 All rights reserved 上海皓煦数据技术有限公司 沪ICP备08012157号-5
+		</div>
+	</div>
+
+</div>

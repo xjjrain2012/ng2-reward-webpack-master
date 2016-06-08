@@ -1,0 +1,962 @@
+.reward-edit .re-main {
+    padding: 37px 17px 37px 76px;
+}
+
+.reward-edit .rd-preview {
+    position: relative;
+    width: 285px;
+}
+
+.reward-edit .re-form {
+    width: 638px;
+}
+
+.re-form .re-form-field {
+    padding-bottom: 9px;
+}
+
+.re-form .lengend {
+    font-size: 18px;
+    display: inline-block;
+    line-height: 24px;
+    color: #383838;
+    border-bottom: 2px solid #5d90cb;
+    padding-top: 3px;
+    margin-bottom: 9px;
+}
+
+.re-form-field .re-label {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.re-form .inputtxt {
+    padding: 6px 17px;
+}
+
+.re-form .input-287 {
+    width: 287px;
+}
+
+.re-form .input-163 {
+    width: 163px;
+}
+
+.re-form .input-80 {
+    width: 80px;
+}
+
+.re-form .input-191 {
+    width: 191px;
+}
+
+.re-form .input-70 {
+    width: 70px;
+}
+
+.re-form .input-97 {
+    width: 97px;
+}
+
+.re-form .input-157 {
+    width: 157px;
+}
+
+.re-form .input-200 {
+    width: 200px;
+}
+
+.re-form .input-120 {
+    width: 120px;
+}
+
+.re-form textarea {
+    display: block;
+    width: 479px;
+    height: 101px;
+    border: 1px solid #d3d3d3;
+}
+
+.re-form .inputs {
+    margin: 11px 0;
+}
+
+.re-form .inputs input {
+    margin-right: 10px;
+}
+
+.re-form .inputs > span {
+    position: relative;
+    display: inline-block;
+    padding-right: 18px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #5d90cb;
+    font-size: 12px;
+    line-height: 25px;
+    height: 25px;
+}
+
+.re-form .inputs > span:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    display: block;
+    width: 10px;
+    height: 25px;
+    content: '';
+    background: url(../images/reward_ico.png) no-repeat -202px -13px;
+}
+
+.re-form .inputs > span.open:after {
+    background-position: -231px -13px;
+}
+
+.re-form .inputs > span.re-show:after {
+    background-position: -232px -13px;
+}
+
+.re-form .inputs .input-80 {
+    padding: 6px;
+}
+
+.re-form .advance {
+    margin: 15px 50px 15px 0;
+    border: 2px dashed #5d90cb;
+    padding: 13px 21px;
+}
+
+.re-form .advance-base {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.re-form .advance-show {
+    display: block;
+}
+
+.re-form .advance .re-tip {
+    font-size: 12px;
+    color: #888;
+    margin-top: 16px;
+}
+
+.re-form .add-prize span {
+    color: #5d90cb;
+    cursor: pointer;
+}
+
+.re-form .advance-result {
+    display: block;
+    padding: 24px 13px 22px 42px;
+}
+
+.re-form .advance-suc,
+.re-form .advance-suc .re-tip,
+.re-form .advance-err,
+.re-form .advance-err .re-tip {
+    color: #00b598;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.re-form .advance-err,
+.re-form .advance-err .re-tip {
+    color: #ff0013;
+}
+
+.re-form .advance-suc .f-name {
+    color: #383838;
+    font-size: 12px;
+    margin-left: 29px;
+}
+
+.re-form .re-subtit {
+    margin-bottom: 12px;
+}
+
+.re-form .re-subtit input {
+    margin-left: 8px;
+}
+
+.re-form .re-upload {
+    font-size: 0;
+    position: relative;
+}
+
+.re-form .re-upload input[type='file'] {
+    position: absolute;
+    display: block;
+    background: #ff0;
+    width: 105px;
+    height: 30px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.re-form .re-upload > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.re-form .re-upload .rd-btn {
+    font-size: 14px;
+    width: 105px;
+    background: #00b598;
+    border-radius: 2px;
+    line-height: 28px;
+    color: #fff;
+    text-align: center;
+}
+
+.re-form .re-upload .rd-btn:hover {
+    border: 1px solid #00b598;
+    color: #fff;
+}
+
+.re-form .re-upload input[type='file']:hover + .rd-btn {
+    background: #fff;
+    color: #00b598;
+}
+
+.re-form .re-upload-op input[type='file'] {
+    width: 62px;
+}
+
+.re-form .re-upload .re-progress {
+    width: 234px;
+    font-size: 0;
+    vertical-align: middle;
+    background: #f3f3f3;
+    line-height: 25px;
+    height: 25px;
+    margin-left: 16px;
+    padding: 6px 0 5px;
+}
+
+.re-form .re-upload .re-progress span {
+    float: left;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.re-form .re-upload .re-progress > span:first-child {
+    width: 160px;
+    text-indent: 13px;
+    overflow: hidden;
+}
+
+.re-form .re-upload .re-progress-bar {
+    float: left;
+    height: 14px;
+    width: 191px;
+    border: 1px solid #5b92c8;
+    background: #fff;
+    margin: 0 10px 0 0;
+}
+
+.re-form .re-upload .re-progress-bar div {
+    height: 100%;
+    width: 0;
+    background: #669dd3;
+}
+
+.re-form .re-upload .upload-preview {
+    position: relative;
+    color: #5d90cb;
+    font-size: 14px;
+    width: 37px;
+    text-indent: 7px;
+    cursor: pointer;
+}
+
+.re-form .re-upload .upload-preview .upload-preview-bg {
+    display: none;
+    position: absolute;
+    left: -330px;
+    top: -318px;
+    padding: 319px 0 0 50px;
+    background: url(../images/upload_preview_bg.png) no-repeat center center;
+    width: 342px;
+    height: 670px;
+}
+
+.re-form .re-upload .upload-preview:hover .upload-preview-bg {
+    display: block;
+}
+
+.re-form .re-upload .upload-preview-bg > div {
+    color: #fff;
+    font-size: 24px;
+    width: 238px;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    background: url(../images/upload_preview_img_dft.png) no-repeat center center;
+    background-size: cover;
+}
+
+.re-form .re-import-code input[type='file'],
+.re-form .re-import-code .rd-btn {
+    width: 76px;
+    height: 25px;
+    line-height: 23px;
+}
+
+.re-form .re-import-code .re-progress > span:first-child {
+    width: 127px;
+}
+
+.re-form .re-import-code .re-progress {
+    width: 370px;
+}
+
+.re-form .upload-op {
+    cursor: pointer;
+    font-size: 12px;
+    color: #5d90cb;
+    text-decoration: underline;
+    margin-left: 9px;
+}
+
+.re-form .re-upload .upload-op {
+    line-height: 25px;
+}
+
+.re-ckb {
+    display: none;
+}
+
+.re-ckb + label {
+    display: inline-block;
+    padding-left: 31px;
+    position: absolute;
+    height: 24px;
+    margin: 0;
+    line-height: 24px;
+    font-weight: normal;
+}
+
+.re-ckb + label:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 20px;
+    background: url(../images/reward_ico.png) no-repeat -236px -75px;
+}
+
+.re-ckb:checked + label:before {
+    background-position: -203px -75px;
+}
+
+.re-ckb-radio + label:before {
+    background-position: -236px -47px;
+}
+
+.re-ckb-radio:checked + label:before {
+    background-position: -203px -47px;
+}
+
+.re-pr + label {
+    position: relative;
+}
+
+.re-form-field .re-label label {
+    margin-left: 17px;
+}
+
+.re-form-name .inputtxt {
+    margin-right: 18px;
+}
+
+.re-ckb:disabled:not(:checked) + label:before {
+    background: url(../images/checkbox-disabled.png) no-repeat 2px 2px
+}
+
+.re-ckb-radio:disabled:not(:checked) + label:before {
+    background: url(../images/radio-disabled.png) no-repeat 2px 2px
+}
+
+
+/** message **/
+
+.re-message .re-form-field {
+    position: relative;
+    padding-left: 90px;
+}
+
+.re-message .re-form-field .re-label {
+    position: absolute;
+    width: 90px;
+    top: 0;
+    left: 0;
+}
+
+.re-message .msg-day {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    font-size: 0;
+    width: 84px;
+    height: 25px;
+    border: 1px solid #cecece;
+}
+
+.re-message .msg-day input {
+    display: block;
+    height: 23px;
+    font-size: 12px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 23px;
+    border: none;
+    border-left: 1px solid #cecece;
+    border-right: 1px solid #cecece;
+    width: 34px;
+}
+
+.re-message .msg-day span,
+.re-add-num span,
+.re-add-num .add-btn {
+    border: 0;
+    position: absolute;
+    display: block;
+    width: 24px;
+    top: 0;
+    height: 23px;
+    background: url(../images/reward_ico.png) no-repeat;
+    cursor: pointer;
+}
+
+.re-message .msg-day span.minus {
+    background-position: -203px -108px;
+    left: 0px;
+}
+
+.re-message .msg-day span.plus {
+    background-position: -241px -108px;
+    right: 0px;
+}
+
+.re-message .msg-day span.minus:hover {
+    background-position: -203px -142px;
+    left: 0;
+}
+
+.re-message .msg-day span.plus:hover {
+    background-position: -241px -142px;
+    right: 0;
+}
+
+.re-message .re-ckb + label {
+    position: relative;
+    vertical-align: middle;
+}
+
+.re-message .re-msg-ops {
+    padding: 5px 0;
+    margin: 7px 0;
+    font-size: 12px;
+}
+
+.re-message .re-msg-ops:first-child {
+    margin-top: 0;
+}
+
+
+/** convert **/
+
+.re-convert {
+    margin-bottom: 23px;
+}
+
+.re-convert .re-form-field {
+    position: relative;
+    padding-left: 120px;
+    padding-bottom: 0;
+}
+
+.re-convert .re-form-field .re-label {
+    position: absolute;
+    width: 120px;
+    top: 0;
+    left: 0;
+}
+
+.re-convert .re-convert-ops {
+    font-size: 0;
+    padding: 5px 0;
+}
+
+.re-convert .re-convert-ops > label,
+.re-convert .re-convert-ops > a,
+.re-convert .re-convert-ops > span {
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.re-convert .re-convert-ops > span {
+    color: #9a9a9a;
+    position: absolute;
+    top: 0;
+}
+
+.re-convert .re-convert-ops > a {
+    color: #5d90cb;
+    text-decoration: underline;
+}
+
+.re-convert .re-convert-ops .re-ckb + label {
+    position: relative;
+    width: 90px;
+}
+
+.re-convert .re-convert-ops .re-ckb:first-child + label {
+    width: 105px;
+}
+
+.re-convert .re-convert-code {
+    margin: 10px 0;
+}
+
+.re-convert .re-convert-create > span {
+    width: 156px;
+    margin-left: 15px;
+}
+
+.re-convert .re-convert-code > input[type="text"] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.re-convert .re-convert-type > span {
+    width: 280px;
+}
+
+.re-convert .re-convert-code > span {
+    width: 200px;
+}
+
+.re-convert .advance {
+    margin-bottom: 0;
+}
+
+.re-convert .re-convert-lib {
+    font-size: 12px;
+}
+
+.re-convert .re-convert-lib input {
+    margin-right: 10px;
+}
+
+
+/** rule **/
+
+.re-rule {
+    font-size: 12px;
+}
+
+.re-rule .rd-btn,
+.rx-condition .rd-btn {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 15px 0 0;
+    padding: 0 12px;
+    border-color: #c9c9ca;
+    background: #fff;
+    color: #383838;
+    font-size: 12px;
+    width: auto;
+}
+
+.re-rule .rd-btn.active,
+.re-rule .rd-btn:hover,
+.rx-condition .rd-btn.active,
+.rx-condition .rd-btn:hover {
+    border-color: #006795;
+    background: #5d91c7;
+    color: #fff;
+}
+
+.re-rule .re-ckb + label {
+    position: relative;
+}
+
+.re-rule .re-rule-custom {
+    padding-bottom: 6px;
+    margin-top: 23px;
+    position: relative;
+}
+
+.re-rule .re-rule-custom input {
+    margin-right: 37px;
+    position: relative;
+    background: transparent;
+    z-index: 2;
+}
+
+.re-rule .re-rule-custom:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 16px;
+    height: 14px;
+    background: url(../images/reward_ico.png) no-repeat -164px -282px;
+    top: 5px;
+    left: 170px;
+    z-index: 1;
+}
+
+.re-rule .re-rule-cbks {
+    padding: 10px 0;
+}
+
+.re-rule .re-rule-cbks input[type="text"] {
+    margin: 0 7px 0 25px;
+}
+
+.re-rule .re-rule-cbks span,
+.re-form .ipt-tip {
+    margin-left: 27px;
+    color: #9a9a9a;
+}
+
+.re-rule .re-convert-lib input {
+    margin-right: 10px;
+}
+
+
+/** detail **/
+
+.reward-detail .rd-main {
+    padding: 75px 20px 0;
+    margin: 0;
+}
+
+.rx-col {
+    position: relative;
+    padding-left: 289px;
+    min-height: 500px;
+}
+
+.rx-col .rx-side {
+    position: absolute;
+    width: 272px;
+    left: 0;
+    top: 0;
+}
+
+.s-header {
+    height: 82px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 22px;
+    margin: 1px;
+    background: url(../images/coupon_hover.png) no-repeat center center;
+    background-size: cover;
+}
+
+.s-header h1 {
+    font-size: 18px;
+    margin: 0 0 12px;
+}
+
+.s-header span {
+    margin-left: 16px;
+}
+
+.s-items {
+    border-top: 1px solid #dbdbdb;
+    font-size: 0;
+    padding-top: 4px;
+}
+
+.s-item {
+    margin: 30px 0;
+}
+
+.s-item span,
+.s-item a {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 16px;
+    height: 16px;
+    vertical-align: middle;
+    color: #383838;
+}
+
+.s-item > div {
+    margin: 14px 0;
+}
+
+.s-item > div:first-child {
+    margin-top: 0;
+}
+
+.s-item > div > span:first-child {
+    width: 125px;
+    margin-right: 15px;
+    text-align: right;
+}
+
+.s-item > div > span:first-child + span {
+    width: 88px;
+}
+
+.s-item .c-blue {
+    color: #5d90cb;
+}
+
+.s-item .c-green {
+    color: #16a085;
+}
+
+.s-item .s-ico {
+    width: 18px;
+    background: url(../images/reward_ico.png) no-repeat;
+    cursor: pointer;
+}
+
+.s-item .s-ico-add {
+    background-position: -239px -185px;
+}
+
+.s-item .s-ico-down {
+    background-position: -239px -214px;
+}
+
+.s-item .s-ico-add:hover {
+    background-position: -208px -185px;
+}
+
+.s-item .s-ico-down:hover {
+    background-position: -208px -214px;
+}
+
+.s-rel .s-rel-title {
+    font-size: 16px;
+    height: 43px;
+    line-height: 43px;
+    text-indent: 28px;
+    background: #f7f7f7;
+    margin-bottom: 5px;
+}
+
+.s-rel a {
+    display: block;
+    padding: 19px 28px;
+    height: 52px;
+    overflow: hidden;
+    line-height: 1;
+    color: #383838;
+}
+
+.rx-main {
+    min-width: 1000px;
+    padding: 0 20px;
+}
+
+.rx-main > h1 {
+    color: #9a9a9a;
+    font-size: 18px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+}
+
+.rx-search {
+    border: 1px solid #c9c9ca;
+    border-top: 4px solid #5d91c7;
+    margin-bottom: 30px;
+}
+
+.rx-condition {
+    font-size: 0;
+    color: #383838;
+    padding: 27px 0 0;
+}
+
+.rx-condition > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.rx-cond-label {
+    font-size: 14px;
+    width: 103px;
+    text-indent: 25px;
+}
+
+.rx-condition .rd-btn {
+    height: 21px;
+    line-height: 19px;
+    vertical-align: middle;
+}
+
+.s-input {
+    position: relative;
+    display: inline-block;
+    width: 244px;
+    height: 21px;
+    line-height: 19px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.s-input select {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bcbcbc;
+    font-size: 12px;
+    text-align: center;
+    background: transparent;
+}
+
+.rx-cond-op {
+    margin: 33px 0 0;
+    border-top: 1px solid #c9c9ca;
+    height: 43px;
+    background: #f7f7f7;
+    padding: 10px 24px 0 0;
+}
+
+.rx-cond-op .rd-btn {
+    float: right;
+    height: 26px;
+    line-height: 24px;
+    border-radius: 2px;
+}
+
+.rx-list {
+    margin-bottom: 25px;
+}
+
+.rx-list table {
+    border: 1px solid #c9c9ca;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    line-height: 44px;
+    margin: 0;
+}
+
+.rx-list table caption {
+    text-align: left;
+    color: #383838;
+    caption-side: top;
+    font-size: 16px;
+    border: 1px solid #c9c9ca;
+    border-bottom: none;
+    height: 43px;
+    line-height: 42px;
+    background: #f7f7f7;
+    text-indent: 24px;
+    padding: 0;
+}
+
+.rx-list table td {
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.rx-list .table>thead>tr>th {
+    font-weight: normal;
+    text-align: center;
+    border-bottom-width: 1px;
+    vertical-align: middle;
+}
+
+.rx-list .c-pink {
+    color: #e26a6a;
+}
+
+.rx-list .rx-list-empty {
+    height: 220px;
+    line-height: 220px;
+    border: 1px solid #c9c9ca;
+    border-top: none;
+}
+
+.re-add-num {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+    height: 25px;
+    line-height: 23px;
+    border: 1px solid #cecece;
+    background: #eee;
+    vertical-align: middle;
+    margin: 0 0 0 15px;
+}
+
+.re-add-num input {
+    display: block;
+    width: 154px;
+    height: 100%;
+    border: none;
+    padding: 0 13px;
+    font-size: 12px;
+}
+
+.re-add-num span,
+.re-add-num .add-btn {
+    width: 25px;
+    border-left: 1px solid #cecece;
+    background-position: -241px -108px;
+    right: 0px;
+}
+
+.re-add-num span:hover,
+.re-add-num .add-btn:hover {
+    background-position: -241px -142px;
+    right: 0;
+}
+
+.re-form .re-convert .re-convert-ops > a.re-date-tip {
+    margin-left: 17px;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.rd-mid-edit {
+    font-size: 18px;
+    color: #f97373;
+    min-height: 36px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.rd-save {
+    border: 0;
+    position: absolute;
+    width: 75px;
+    height: 56px;
+    background: #89c654 url(../images/reward_ico.png) no-repeat -40px -229px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.rd-save:hover {
+    background-color: #77b442;
+}
+
+.re-form .inputs .re-add-num {
+    width: 164px;
+    margin-right: 17px;
+}
+
+.re-form .inputs .re-add-num input {
+    width: 150px;
+}

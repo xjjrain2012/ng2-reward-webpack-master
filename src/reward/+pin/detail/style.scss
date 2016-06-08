@@ -1,0 +1,55 @@
+.reward-detail-pin .s-item > div { margin:38px 0; }
+.add-total-block{text-align: center;border: 1px dashed #ccc;padding: 10px 0}
+.add-total-tip{
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+  }
+.th-datepicker-block{
+  .th-datepicker-range{
+    position: relative;
+  }
+  .th-datepicker-tip{
+    position: absolute;width:640px;z-index: 2;
+  }
+  .th-datepicker{
+    display:inline-block; width:320px;min-height:270px;
+  }
+}
+.re-rule{
+  .re-rule-pin{
+    position: relative;
+    .s-input {
+        position: relative;
+        display: inline-block;
+        width: 170px;
+        height: 21px;
+        line-height: 19px;
+        vertical-align: middle;
+        margin-right: 15px;
+    }
+    .inputtxt {
+        height: 21px;
+        border: 1px solid #d3d3d3;
+        font-size: 12px;
+        color: #383838;
+    }
+    &:after{
+      display: block;
+      position: absolute;
+      content: '';
+      width: 16px;
+      height: 14px;
+      background: url(./../../reward/images/reward_ico.png) no-repeat -164px -282px;
+      top: 3px;
+      left: 210px;
+      z-index: 1;
+    }
+  }
+}
+.reward-pin .re-convert { margin-bottom:20px; }
+.reward-pin .re-convert .advance { margin:15px 0 ; }
+.reward-pin .re-convert .advance .re-tip { margin-bottom:0; }
+.reward-pin .advance .re-tip { margin: 13px 0 16px 0; }
+.reward-pin .re-convert .re-form-field { padding-left:85px; }
+.reward-pin .re-convert .re-form-field .re-label { width:85px; }

@@ -1,0 +1,117 @@
+<div class="reward-edit reward-pin">
+	<div class="zs-bar tc">
+		<a href="#/reward/home" class="zs-back"></a>
+		新建奖励
+		<div class="rd-save"></div>
+	</div>
+	<div class="rd-main">
+		<div class="rd-mid-edit">奖励正在运行中，修改内容并保存后将立即生效，请谨慎操作！</div>
+		<div class="rd-mid zs-border clearfix re-main">
+			<div class="re-form fr">
+				<!-- 基础信息 -->
+				<div class="lengend">基础信息</div>
+				<div class="re-base">
+					<div class="re-form-field re-form-name">
+						<div class="re-label">奖励方案名称：</div>
+						<div>
+							<input class="inputtxt input-287" type="text" placeholder="最多显示8个字">
+							<input class="re-ckb re-pr" type="checkbox" checked id="ckb-name"> <label for="ckb-name">显示</label>
+						</div>
+					</div>
+					<div class="re-form-field re-form-name">
+						<div class="re-label">奖励副标题：</div>
+						<div>
+							<input class="inputtxt input-287" type="text" placeholder="最多显示12个字">
+							<input class="re-ckb re-pr" type="checkbox" id="ckb-subname"> <label for="ckb-subname">显示</label>
+						</div>
+					</div>
+					<div class="re-form-field re-form-name">
+						<div class="re-label">自定义背景图：<input class="re-ckb" type="checkbox" id="ckb-bg"> <label for="ckb-bg">启用</label></div>
+						<div>
+							<div class="advance advance-base advance-show">
+								<div class="re-tip">请使用200*90比例的的PNG透明图片，小于2M</div>
+								<div class="re-upload">
+									<input type="file">
+									<div class="rd-btn">选择文件</div>
+									<div class="re-progress clearfix">
+										<span>满100减20.PNG</span>
+										<div class="re-progress-bar">
+											<div style="width:30%"></div>
+										</div>
+										<span>80%</span>
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="re-form-field">
+						<div class="re-label">活动说明：<input class="re-ckb" type="checkbox" id="ckb-des"> <label for="ckb-des">显示</label></div>
+						<div>
+							<textarea name="" id="" cols="30" rows="10"></textarea>
+						</div>
+						
+					</div>
+				</div>
+				<!-- 基础信息 end -->
+				<!-- 奖励规则 -->
+				<div class="lengend">奖励规则</div>
+				<div class="re-rule">
+					<div class="re-form-field re-rule-date">
+						<div class="re-label">有效日期：</div>
+						<div>
+							<div class="rd-btn active">自定义</div>
+							<div class="rd-btn">发放后当日</div>
+							<div class="rd-btn">发放后24小时</div>
+							<div class="rd-btn">发放后7日</div>
+							<div class="rd-btn">发放后30日</div>
+						</div>
+						<div class="re-rule-custom">
+							<input class="inputtxt input-191" type="text" placeholder="2016.01.11  24:00">
+						</div>
+					</div>
+					<div class="re-form-field">
+						<div class="re-label">
+							发放总量：
+						</div>
+						<div class="re-convert-ops re-convert-lib">
+							<input class="inputtxt input-157" type="text" placeholder="输入1~100,000的数字">张
+							<div class="re-add-num">
+								<input type="text" placeholder="输入1~100,000的数字">
+								<span></span>
+							</div>
+							<a href="" class="re-date-tip">+添加到期提醒</a>
+							<div class="zs-b-des">
+								<i></i>
+								<div>
+									当可发放的奖励少于一定数量时，我们将通过邮件或者手机短信通知到您
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="re-form-field">
+						<div class="re-label">发放规则：</div>
+						<div class="re-rule-cbks">
+							<input class="re-ckb re-ckb-radio" type="radio" name="ruleType" id="rule-type-1"> <label for="rule-type-1">人人有奖</label>
+						</div>
+						<div class="re-rule-cbks">
+							<input class="re-ckb re-ckb-radio" type="radio" name="ruleType" id="rule-type-2"> <label for="rule-type-2">自定义比例</label>
+							<input class="inputtxt input-71" type="text">%
+							<span>输入1～100的数字</span>
+						</div>
+					</div>
+					
+				</div>
+				<!-- 奖励规则 end -->
+				
+				
+			</div>
+			<div class="rd-preview fl">
+				<img src="/reward/images/rd_show.png" alt="">
+			</div>
+		</div>
+	</div>
+		
+</div>

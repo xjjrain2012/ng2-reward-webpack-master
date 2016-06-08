@@ -1,0 +1,303 @@
+<form class="" (ngSubmit)="onSubmit($event)"  [ngFormModel]="psForm">
+<div class="reward-edit reward-pin">
+	<div class="zs-bar tc">
+		<a [routerLink]="['/']" class="zs-back"></a>
+		<!-- <a (click)="goBack()" *ngIf="pinProgram.cRPId" class="zs-back"></a> -->
+		{{pinProgram.cRPId?'修改核验型奖励':'新建核验型奖励'}}
+		<button class="rd-save" [disabled]="loading" type="submit"></button>
+	</div>
+	<div class="rd-main">
+		<div class="rd-mid-edit" *ngIf="state==1">奖励正在运行中，修改内容并保存后将立即生效，请谨慎操作！</div>
+		<div class="rd-mid zs-border clearfix re-main">
+			<div class="re-form fr">
+				<!-- 基础信息 -->
+				<div class="lengend">基础信息</div>
+				<div class="re-base">
+					<div class="re-form-field re-form-name">
+						<div class="re-label"><span class="text-danger">*</span>奖励方案名称：</div>
+						<div>
+							<input class="inputtxt input-287" type="text" maxlength="8" name="cRPName" [(ngModel)]="pinProgram.cRPName" [ngFormControl]="psForm.controls['cRPName']" required placeholder="最多显示8个字">
+							<input class="re-ckb re-pr" type="checkbox" name="cRPNameShow" [(ngModel)]="pinProgram.cRPNameShow" [ngFormControl]="psForm.controls['cRPNameShow']" checked id="ckb-name"> <label for="ckb-name">显示</label>
+              <div class="alert alert-danger" *ngIf="psForm.touched&&psForm.find('cRPName').hasError('required')">
+								奖励方案名称不能为空
+							</div>
+            </div>
+					</div>
+					<div class="re-form-field re-form-name">
+						<div class="re-label">奖励副标题：</div>
+						<div>
+							<input class="inputtxt input-287" type="text" name="cRPSubtitle" [(ngModel)]="pinProgram.cRPSubtitle" [ngFormControl]="psForm.controls['cRPSubtitle']"  maxlength="12" placeholder="最多显示12个字">
+							<input class="re-ckb re-pr" type="checkbox" name="cRPSubtitleShow" [(ngModel)]="pinProgram.cRPSubtitleShow" [ngFormControl]="psForm.controls['cRPSubtitleShow']" id="ckb-subname"> <label for="ckb-subname">显示</label>
+						</div>
+					</div>
+					<div class="re-form-field re-form-name">
+						<div class="re-label">自定义背景图：<input class="re-ckb" type="checkbox" [(ngModel)]="pinProgram.cRPBackgroundShow"  [ngFormControl]="psForm.controls['cRPBackgroundShow']"  name="cRPBackgroundShow" id="ckb-bg"> <label for="ckb-bg">启用</label></div>
+						<div>
+							<div class="advance advance-base advance-show">
+								<div class="re-tip">请使用240*74比例的的PNG,JPG透明图片，小于2M</div>
+								<div *ngIf="!uploadFile" class="re-upload">
+									<input type="file" accept="image/gif,image/jpeg,image/png" name="fileName" [ng-file-select]="options" (onUpload)="handleUpload($event,image)" >
+									<div class="rd-btn">选择文件</div>
+									<div class="re-progress clearfix" *ngIf="basicProgress">
+										<div >
+											<span></span>
+											<div class="re-progress-bar">
+												<div [ngStyle]="{ 'width': basicProgress + '%' }"></div>
+											</div>
+											<span>{{basicProgress + '%'}}</span>
+										</div>
+									</div>
+								</div>
+								<div *ngIf="uploadFile?.data" style="background: #f3f3f3;">
+									<span>已上传图片  {{basicResp?.originalName||uploadFile?.data}}</span>
+									<div class="re-upload re-upload-op">
+										<input type="file" accept="image/gif,image/jpeg,image/png" name="fileName" [ng-file-select]="options" (onUpload)="handleUpload($event)" >
+										<div class="upload-op">重新上传</div><div class="upload-op" (click)="onDelImg()">删除</div>
+										<div class="re-progress clearfix" *ngIf="basicProgress">
+											<div >
+												<span></span>
+												<div class="re-progress-bar">
+													<div [ngStyle]="{ 'width': basicProgress + '%' }"></div>
+												</div>
+												<span>{{basicProgress + '%'}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div *ngIf="uploadFile?.error" style="background: #f3f3f3;">
+									<span class="text-danger">{{uploadFile.error.msg}}</span>
+									<div class="re-upload re-upload-op">
+										<input type="file" accept="image/gif,image/jpeg,image/png" name="fileName" [ng-file-select]="options" (onUpload)="handleUpload($event)" >
+										<div class="upload-op">重新上传</div><div class="upload-op" (click)="onDelImg()">删除</div>
+										<div class="re-progress clearfix" *ngIf="basicProgress">
+											<div >
+												<span></span>
+												<div class="re-progress-bar">
+													<div [ngStyle]="{ 'width': basicProgress + '%' }"></div>
+												</div>
+												<span>{{basicProgress + '%'}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="re-form-field">
+						<div class="re-label">活动说明：<input class="re-ckb" type="checkbox" name="cRPDescShow" [(ngModel)]="pinProgram.cRPDescShow" [ngFormControl]="psForm.controls['cRPDescShow']" id="ckb-des"> <label for="ckb-des">显示</label></div>
+						<div>
+							<textarea name="" id="" cols="30" rows="10" [(ngModel)]="pinProgram.cRPDesc"  [ngFormControl]="psForm.controls['cRPDesc']"></textarea>
+						</div>
+
+					</div>
+				</div>
+				<!-- 基础信息 end -->
+				<!-- 奖励规则 -->
+				<div class="lengend">奖励规则</div>
+				<div class="re-rule">
+					<div class="re-form-field re-rule-date">
+						<div class="re-label">有效日期：</div>
+            <div>
+              <div class="rd-btn" [class.active]="pinProgram.cRPValidType===-1" (click)="pinProgram.cRPValidType=-1;onInitDate();">自定义</div>
+              <div class="rd-btn" *ngIf="pinProgram.cRPCodeType === 1" [class.active]="pinProgram.cRPValidType===0" (click)="pinProgram.cRPValidType=0">发放后当日</div>
+              <div class="rd-btn" *ngIf="pinProgram.cRPCodeType === 1" [class.active]="pinProgram.cRPValidType===24" (click)="pinProgram.cRPValidType=24">发放后24小时</div>
+              <div class="rd-btn" *ngIf="pinProgram.cRPCodeType === 1" [class.active]="pinProgram.cRPValidType===7" (click)="pinProgram.cRPValidType=7">发放后7日</div>
+              <div class="rd-btn" *ngIf="pinProgram.cRPCodeType === 1" [class.active]="pinProgram.cRPValidType===30" (click)="pinProgram.cRPValidType=30">发放后30日</div>
+              <input name="cRPValidType" type="hidden" [ngFormControl]="psForm.controls['cRPValidType']" [(ngModel)]="pinProgram.cRPValidType" >
+            </div>
+						<div class="re-rule-custom th-datepicker-block" *ngIf="pinProgram.cRPValidType===-1">
+							<div class="s-input tc th-datepicker-range" >
+								<input type="text" readonly (click)="onShowDate($event)" name="name" class="inputtxt" [value]="pinProgram.cRPValidStartDate+'~'+pinProgram.cRPValidEndDate" style="width:100%" value="">
+								<div class="tc th-datepicker-tip" (click)="$event.stopPropagation()" *ngIf="dateShow" >
+									<div class="th-datepicker" >
+										<datepicker [ngModel]="pinProgram.cRPValidStartDate" (ngModelChange)="pinProgram.cRPValidStartDate = moment($event)"  [showWeeks]="true"></datepicker>
+									</div>
+									<div class="th-datepicker">
+										<datepicker [ngModel]="pinProgram.cRPValidEndDate" (ngModelChange)="pinProgram.cRPValidEndDate = moment($event)" [showWeeks]="true"></datepicker>
+									</div>
+								</div>
+							</div>
+							<div *ngIf="timeError" style="height: 30px;line-height: 30px;" class="text-danger">结束时间大于开始时间</div>
+					</div>
+					</div>
+					<div class="re-form-field">
+						<div class="re-label">发放规则：</div>
+						<div class="re-rule-cbks">
+							<input class="re-ckb re-ckb-radio" type="radio" name="ruleType" [checked]="pinProgram.cRPRate === 1" (click)="pinProgram.cRPRate = 1" id="rule-type-1"> <label for="rule-type-1">人人有奖</label>
+						</div>
+						<div class="re-rule-cbks">
+							<input class="re-ckb re-ckb-radio" type="radio" name="ruleType" [checked]="pinProgram.cRPRate === 2" (click)="pinProgram.cRPRate = 2" id="rule-type-2"> <label for="rule-type-2">自定义比例</label>
+							<input class="inputtxt input-71" type="text" name="cRPRateContent" pattern="^([0-9]{1,2}((\.\d\d)|(\.\d))?|100)$" [(ngModel)]="pinProgram.cRPRateContent" [ngFormControl]="psForm.controls['cRPRateContent']">%
+							<span>输入1～100的数字</span>
+						</div>
+						<div class="text-danger" *ngIf="cRPRateContent.hasError('pattern')">
+							输入1~100的数字,实际输入超出范围的数字,或者字母
+						</div>
+					</div>
+
+				</div>
+				<!-- 奖励规则 end -->
+				<!-- 奖品兑换方式 -->
+				<div class="lengend">奖品兑换方式</div>
+				<div class="re-convert" >
+					<div class="re-form-field">
+						<div class="re-label"><span class="text-danger">*</span>码类型：</div>
+						<div class="re-convert-ops re-convert-code" >
+  							<input class="re-ckb re-ckb-radio" [disabled]="pinProgram.cRPId" type="radio" name="convertCode" [checked]="pinProgram.cRPCodeType === 1" (click)="pinProgram.cRPCodeType = 1"  id="convert-code-1"> <label for="convert-code-1">一人一码</label>
+  							<input class="re-ckb re-ckb-radio" [disabled]="pinProgram.cRPId" type="radio" name="convertCode" [checked]="pinProgram.cRPCodeType === 2" (click)="pinProgram.cRPCodeType = 2;pinProgram.cRPValidType=-1;" id="convert-code-2"> <label for="convert-code-2">通用码</label>
+              <input class="inputtxt input-70" type="text" maxlength="8" *ngIf="pinProgram.cRPCodeType === 2" [(ngModel)]="pinProgram.cRPCodeCommon"  [ngFormControl]="psForm.controls['cRPCodeCommon']" >
+							<span>输入6-8位数字与英文字母的组合，如 SALE20</span>
+						</div>
+					</div>
+					<div class="re-form-field"  *ngIf="pinProgram.cRPCodeType === 1" >
+						<div class="re-label"><span class="text-danger">*</span>生成方式：</div>
+						<div class="re-convert-ops re-convert-create" >
+							<input class="re-ckb re-ckb-radio" [disabled]="pinProgram.cRPId" type="radio" name="convertCreate" [checked]="pinProgram.cRPGenerateType === 1" (click)="pinProgram.cRPGenerateType = 1"  id="convert-create-1"> <label for="convert-create-1">系统生成</label>
+							<input class="re-ckb re-ckb-radio" [disabled]="pinProgram.cRPId" type="radio" name="convertCreate" [checked]="pinProgram.cRPGenerateType === 2" (click)="pinProgram.cRPGenerateType = 2" id="convert-create-2"> <label for="convert-create-2">导入码库</label>
+							<a href="/word/checkcode.xlsx" *ngIf="pinProgram.cRPGenerateType === 2">下载模板文件</a>
+						</div>
+					</div>
+					<div class="advance advance-show" *ngIf="!uploadFileXls?.error&&!pinProgram.fileName&&pinProgram.cRPGenerateType === 2&&pinProgram.cRPCodeType === 1">
+							<div  class="re-upload">
+								<input type="file" name="fileName" [ng-file-select]="fileOptions" (onUpload)="handleFileUpload($event)" >
+								<div class="rd-btn">选择文件</div>
+								<div class="re-progress clearfix" *ngIf="fileProgress">
+									<div >
+										<span></span>
+										<div class="re-progress-bar">
+											<div [ngStyle]="{ 'width': fileProgress + '%' }"></div>
+										</div>
+										<span>{{fileProgress + '%'}}</span>
+									</div>
+								</div>
+							</div>
+						<div class="re-tip">请下载模板文件，按照要求上传导入码库</div>
+					</div>
+					<div class="advance advance-result advance-suc" *ngIf="uploadFileXls?.error?.state===0&&pinProgram.cRPGenerateType === 2&&pinProgram.cRPCodeType === 1">
+						<div class="clearfix">
+							<span>已上传</span>
+							<span class="f-name">{{uploadFileXls?.data.filePath}}</span>
+							<div  class="re-upload re-upload-op">
+								<input type="file" name="fileName"  [ng-file-select]="fileOptions" (onUpload)="handleFileUpload($event)" >
+								<div class="upload-op">重新上传</div><div class="upload-op"  (click)="onDelFileName()">删除</div>
+								<div class="re-progress clearfix" *ngIf="fileProgress">
+									<div >
+										<span></span>
+										<div class="re-progress-bar">
+											<div [ngStyle]="{ 'width': fileProgress + '%' }"></div>
+										</div>
+										<span>{{fileProgress + '%'}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="re-tip">成功导入 {{uploadFileXls?.data?.num}}个核验码</div>
+					</div>
+					<div class="advance advance-result advance-err" *ngIf="uploadFileXls?.error?.state>0&&pinProgram.cRPGenerateType === 2&&pinProgram.cRPCodeType === 1">
+						<div class="clearfix">
+							<span>{{uploadFileXls?.error.msg}}</span>
+							<div  class="re-upload re-upload-op" >
+								<input type="file" name="fileName" [ng-file-select]="fileOptions" (onUpload)="handleFileUpload($event)" >
+								<div class="upload-op">重新上传</div><div class="upload-op"  (click)="onDelFileName()">删除</div>
+								<div class="re-progress clearfix" *ngIf="fileProgress">
+									<div >
+										<span></span>
+										<div class="re-progress-bar">
+											<div [ngStyle]="{ 'width': fileProgress + '%' }"></div>
+										</div>
+										<span>{{fileProgress + '%'}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="re-tip">核验码需由字母和数字组合，6-12位</div>
+					</div>
+					<div class="re-form-field" *ngIf="pinProgram.cRPGenerateType === 1">
+						<div class="re-label">
+							<span class="text-danger">*</span>库存：
+						</div>
+						<div class="re-convert-ops re-convert-lib">
+							<input class="inputtxt" [disabled]="pinProgram.cRPId" type="text" pattern="^([1-9][0-9]{0,4}|100000)$"  [(ngModel)]="pinProgram.totalRewards" [ngFormControl]="psForm.controls['totalRewards']" placeholder="输入1~100,000的数字">张
+							<div class="re-add-num" *ngIf="pinProgram.cRPId">
+								<input type="text" (keyup)="onEnterAddTotal($event)" [(ngModel)]="additionalNum" placeholder="输入1~100,000的数字">
+								<button type="button" class="add-btn" (click)="onAddTotal()" ></button>
+							</div>
+							<!-- <a href="" class="re-date-tip">+添加到期提醒</a>
+							<div class="zs-b-des">
+								<i></i>
+								<div>
+									当可发放的奖励少于一定数量时，我们将通过邮件或者手机短信通知到您
+								</div>
+							</div> -->
+						</div>
+						<div class="text-danger" *ngIf="additionalNumError">
+							输入不符合规则,请输入1~100,000的整数
+						</div>
+						<div class="text-danger" *ngIf="addTotaError">
+							输入不符合规则,请输入1~100,000的整数
+						</div>
+						<div class="text-danger" *ngIf="totalRewardsError">
+							输入不符合规则,请输入1~100,000的整数
+						</div>
+					</div>
+
+
+
+				</div>
+				<!-- 奖品兑换方式 end -->
+				<!-- 短信通知 -->
+				<div class="lengend">短信通知</div>
+				<div class="re-message">
+					<div class="re-form-field">
+						<div class="re-label">通知规则：</div>
+						<div>
+							<div class="re-msg-ops">
+								<input class="re-ckb" type="checkbox" [(ngModel)]="pinProgram.cRPNoticeNow" [ngFormControl]="psForm.controls['cRPNoticeNow']" id="ckb-msg-notice"> <label for="ckb-msg-notice">获奖后立即通知（短信¥0.50元/条，发送（{{pinProgram.cRPGenerateType === 1?(pinProgram.totalRewards||0):(uploadFileXls?.data?.num||0)}}）份奖励需¥{{pinProgram.cRPGenerateType === 1?(pinProgram.totalRewards||0)*0.5:(uploadFileXls?.data?.num||0)*0.5}}元）</label>
+							</div>
+							<textarea name="" id="" cols="30" rows="10" maxlength="1000" [(ngModel)]="pinProgram.cRPNoticeNowContent" [ngFormControl]="psForm.controls['cRPNoticeNowContent']" >
+              </textarea>
+							<div class="re-msg-ops">
+								<input class="re-ckb" type="checkbox" id="ckb-msg-day" [(ngModel)]="pinProgram.cRPValidNotice" [ngFormControl]="psForm.controls['cRPValidNotice']" >
+								<label for="ckb-msg-day"></label>
+								到期前
+								<div class="msg-day">
+									<span class="minus" (click)="pinProgram.cRPValidNoticeDay=pinProgram.cRPValidNoticeDay>1?pinProgram.cRPValidNoticeDay-1:1" ></span>
+									<input type="text" [ngModel]="pinProgram.cRPValidNoticeDay" (ngModelChange)="pinProgram.cRPValidNoticeDay=$event>8?9:$event" >
+									<span class="plus" (click)="pinProgram.cRPValidNoticeDay=pinProgram.cRPValidNoticeDay>8?9:pinProgram.cRPValidNoticeDay+1"></span>
+								</div>
+								天通知
+
+							</div>
+							<textarea name="" id="" cols="30" rows="10" [(ngModel)]="pinProgram.cRPValidNoticeContent" [ngFormControl]="psForm.controls['cRPValidNoticeContent']" >
+              </textarea>
+						</div>
+
+					</div>
+				</div>
+				<!-- 短信通知 end -->
+			</div>
+      <div class="rd-preview fl">
+				<img src="./reward/images/preview_block.png" alt="">
+				<div class="reward-view" [ngStyle]="{background:getImg(),'background-size':'240px 74px'}">
+					<div class="reward-title" >
+							<span *ngIf="psForm.value.cRPNameShow">{{psForm.value.cRPName}}</span>
+					</div>
+					<div class="reward-sub-title" >
+							<span *ngIf="psForm.value.cRPSubtitleShow">{{psForm.value.cRPSubtitle}}</span>
+					</div>
+          <div class="reward-code-title" >
+							<span *ngIf="pinProgram.cRPCodeType===2" >兑换码:{{psForm.value.cRPCodeCommon}}</span>
+              <span *ngIf="pinProgram.cRPCodeType===1" >一人一码</span>
+					</div>
+          <div class="reward-time-title">
+							<span *ngIf="psForm.value.cRPValidType===-1">有效日期：{{psForm.value.cRPValidStartDate}}-{{psForm.value.cRPValidEndDate}}</span>
+					</div>
+				</div>
+				<div class="reward-desc-title" *ngIf="psForm.value.cRPDescShow" [innerHTML]="psForm.value.cRPDesc|textTohtml">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>

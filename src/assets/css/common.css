@@ -1,0 +1,346 @@
+body {
+    background: #f1f1f1;
+}
+
+* {
+    outline: none;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #9a9a9a;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: #9a9a9a;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #9a9a9a;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #9a9a9a;
+}
+
+a:hover,
+a:active,
+a:focus,
+a:visited {
+    text-decoration: none;
+}
+
+input[disabled],
+div.disabled,
+span.disabled,
+a.disabled,
+label.disabled {
+    background: #d3d3d3;
+    cursor: default;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.tc {
+    text-align: center;
+}
+
+.pr {
+    position: relative;
+}
+
+.rd-hide {
+    display: none;
+}
+
+.inputtxt {
+    height: 25px;
+    border: 1px solid #d3d3d3;
+    font-size: 12px;
+    color: #383838;
+}
+
+.zs-main {
+    padding: 0 18px;
+}
+
+.zs-main .zs-header .fl {
+    height: 56px;
+    line-height: 56px;
+    color: #9a9a9a;
+    font-size: 22px;
+}
+
+.zs-main .zs-header .fr {
+    padding-top: 12px;
+}
+
+.zs-main .zs-header .fl > i {
+    display: inline-block;
+    margin-left: 10px;
+    width: 35px;
+    height: 26px;
+    vertical-align: middle;
+    background: url(../images/reward_ico.png) no-repeat;
+}
+
+.zs-main .zs-header .fl > .zs-ico-reward {
+    background-position: -65px -14px;
+}
+
+.zs-btn-add {
+    display: block;
+    font-size: 14px;
+    height: 35px;
+    line-height: 33px;
+    border: 1px solid #5d90cb;
+    text-align: center;
+    min-width: 134px;
+    background: #5d90cb;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.zs-btn-add span {
+    position: relative;
+    display: inline-block;
+    padding-left: 22px;
+}
+
+.zs-btn-add span:before,
+.zs-btn-add span:after {
+    position: absolute;
+    content: '';
+    background: #fff;
+}
+
+.zs-btn-add span:before {
+    width: 14px;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    left: 0;
+}
+
+.zs-btn-add span:after {
+    height: 14px;
+    width: 2px;
+    top: 50%;
+    margin-top: -7px;
+    left: 6px;
+}
+
+.zs-btn-add:hover {
+    background: #fff;
+    color: #5d90cb;
+}
+
+.zs-btn-add:hover span:before,
+.zs-btn-add:hover span:after {
+    background: #5d90cb;
+}
+
+.zs-col {
+    position: relative;
+    padding-right: 325px;
+}
+
+.zs-border {
+    border: 1px solid #d4d4d4;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, .11);
+    background: #fff;
+}
+
+.zs-col .zs-col-side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 307px;
+}
+
+.zs-col .zs-col-main,
+.zs-body-main {
+    min-height: 600px;
+}
+
+.zs-empty .zs-empty-img {
+    width: 176px;
+    height: 250px;
+    margin: 0 auto 36px;
+    background: url(../images/empty_img.png) no-repeat center center;
+}
+
+.zs-empty .zs-empty-txt {
+    font-size: 24px;
+    color: #777;
+    text-align: center;
+}
+
+.zs-bar {
+    position: fixed;
+    height: 57px;
+    border-bottom: 1px solid #ccc;
+    background: #323239;
+    color: #ccc;
+    line-height: 56px;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+    font-size: 18px;
+}
+
+.zs-bar .zs-back {
+    display: block;
+    position: absolute;
+    width: 70px;
+    height: 57px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: url(../images/reward_ico.png) no-repeat -44px -181px;
+}
+
+.zs-bar .zs-back:hover {
+    background: url("../images/back-hover.gif") no-repeat left center;
+}
+
+.rd-main {
+    margin-top: 57px;
+}
+
+.rd-mid {
+    position: relative;
+    width: 1085px;
+    margin: 0 auto;
+}
+
+.rd-btn,
+button.rd-btn,
+a.rd-btn {
+    display: block;
+    width: 85px;
+    height: 30px;
+    border: 1px solid #5d90cb;
+    font-size: 14px;
+    background: #5d90cb;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.rd-btn,
+button.rd-btn:hover,
+a.rd-btn:hover {
+    background: #fff;
+    color: #5d90cb;
+}
+
+.rd-footer {
+    font-size: 14px;
+    color: #32323a;
+    height: 50px;
+    line-height: 50px;
+}
+
+.zs-b-des {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.zs-b-des i {
+    position: relative;
+    top: -1px;
+    display: block;
+    width: 13px;
+    height: 13px;
+    background: url(../images/reward_ico.png) no-repeat -209px -249px;
+}
+
+.zs-b-des div {
+    display: none;
+    position: absolute;
+    width: 286px;
+    height: 78px;
+    font-size: 12px;
+    line-height: 1.8;
+    background: transparent url(../images/list_botton.png) no-repeat center center;
+    left: -130px;
+    top: 13px;
+    padding: 20px;
+    text-align: left;
+}
+
+.zs-b-des:hover div {
+    display: block;
+}
+
+.zs-btn-export {
+    display: block;
+    width: 69px;
+    height: 26px;
+    line-height: 24px;
+    text-align: center;
+    border: 1px solid #9a9a9a;
+    background: #eee;
+    color: #9a9a9a;
+    text-indent: 0;
+    border-radius: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 8px 29px 0 0;
+}
+
+.zs-btn-export:hover {
+    color: #9a9a9a;
+}
+
+.rd-btn-inline,
+button.rd-btn-inline,
+a.rd-btn-inline {
+    display: inline-block;
+    width: 85px;
+    height: 25px;
+    border: 1px solid #5d90cb;
+    font-size: 14px;
+    background: #5d90cb;
+    color: #fff;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.rd-btn-inline,
+button.rd-btn-inline:hover,
+a.rd-btn-inline:hover {
+    background: #fff;
+    color: #5d90cb;
+}
+
+.rd-btn-link-inline,
+button.rd-btn-link-inline,
+a.rd-btn-link-inline {
+    display: inline-block;
+    text-decoration: underline;
+    min-width: 45px;
+    height: 25px;
+    font-size: 14px;
+    color: #383838;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+}

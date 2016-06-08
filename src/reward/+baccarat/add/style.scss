@@ -1,0 +1,74 @@
+.th-datepicker-block{
+  .th-datepicker-range{
+    position: relative;
+  }
+  .th-datepicker-tip{
+    position: absolute;width:650px;z-index: 2;
+  }
+  .th-datepicker{
+    display:inline-block; width:320px;min-height:270px;
+  }
+}
+.re-rule{
+  .re-rule-custom{
+    &:after{
+      display: block;
+      position: absolute;
+      content: '';
+      width: 16px;
+      height: 14px;
+      background: url(/reward/images/reward_ico.png) no-repeat -164px -282px;
+      top: 5px;
+      left: 220px;
+      z-index: 1;
+    }
+  }
+}
+.preview-img-btn{
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 20px;
+  &:hover .preview-img-block{
+    display: block;
+  }
+}
+.preview-img-block{
+  display: none;
+  position: absolute;
+  z-index: 10;
+  left: 45px;
+  top: -260px;
+}
+.reward-title{
+  line-height: 46px;
+  text-align: center;
+  color:#fff;
+  font-size: 22px;
+}
+.reward-sub-title{
+  line-height: 40px;
+  text-align: center;
+  color:#fff;
+  font-size: 16px;
+}
+.reward-desc-title{
+  position: absolute;
+  top: 380px;
+  left: 28px;
+  color: #888;
+  width: 232px;
+  height: 95px;
+  text-align: center;
+  overflow: auto;
+}
+.reward-view{
+  background: url(./../../reward/images/coupon_normal.png);
+  display: inline-block;
+  width: 232px;
+  height: 84px;
+  position: absolute;
+  bottom: 250px;
+  left: 28px;
+}

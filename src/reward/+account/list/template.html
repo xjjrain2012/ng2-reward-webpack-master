@@ -1,0 +1,43 @@
+<div class="zs-main reward-account">
+	<div class="zs-header clearfix">
+		<div class="fl">
+			<i class="zs-ico-reward"></i>奖励
+		</div>
+	</div>
+	<div class="zs-body">
+		<div class="zs-body-main zs-border">
+			<div class="ra-crumbs">
+				<a [routerLink]="['/']">返回奖励</a> ＞ 核验子账号设置
+			</div>
+			<a [routerLink]="['/account/add']" class="zs-btn-add"><span>创建子账户</span></a>
+			<div class="zs-empty" *ngIf="!list">
+				<div class="zs-empty-img"></div>
+				<div class="zs-empty-txt">当前未创建核验子账号</div>
+			</div>
+			<div class="ra-list" *ngIf="list">
+				<div class="row">账号列表</div>
+				<div class="row">
+					<div class="col-xs-4">账号名称</div>
+					<div class="col-xs-4">登录邮箱</div>
+					<div class="col-xs-4">操作</div>
+				</div>
+				<div class="row" *ngFor="let l of list, let i = index">
+					<div class="col-xs-4">{{l.cRCUName}}</div>
+					<div class="col-xs-4"> {{l.cRCUEmail}}</div>
+					<div class="col-xs-4" *ngIf="!l.delInput">
+						<a [routerLink]="['/account/edit',{id:l.cRCUId}]">编辑</a>
+						<a class="rd-btn-link-inline" (click)="l.delInput=1">删除</a>
+					</div>
+					<div class="col-xs-4">
+						<div  *ngIf="l.delInput">
+							 <input type="text" class="inputtxt input-157" [(ngModel)]="l.delSubmitText" placeholder="请输入delete,确认删除">
+								 <a class="rd-btn-inline" (click)="onDelete(l)">确认删除</a>
+								 <a class="rd-btn-link-inline" (click)="l.delInput=0">取消删除</a>
+						</div>
+					</div>
+			</div>
+			<pagination (pageChanged)="pageChanged($event)" [totalItems]="pageCount" [(ngModel)]="currentPage" [itemsPerPage]="pageSize" class="pagination-sm"
+						[boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event" firstText="首页" lastText="结束页" previousText="上一页" nextText="下一页"></pagination>
+		</div>
+	</div>
+</div>

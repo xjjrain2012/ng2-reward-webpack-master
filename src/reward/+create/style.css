@@ -1,0 +1,38 @@
+.reward-create { background:#f3f3f3; }
+.reward-create .rd-types .title { color:#383838; font-size:18px; padding:20px 0 31px;  }
+.reward-create .rc-main { padding:17px 157px 18px 154px; }
+.reward-create .rd-types { width:400px; }
+.reward-create .rd-types .types{ font-size:0; }
+.reward-create .rd-types .type { display:inline-block; width:132px; height:77px; border:1px solid #ccc; background:#fff; color:#777; margin:0 43px 30px 0; cursor:pointer; }
+.reward-create .rd-types .type div {text-align: center; font-size:14px;}
+.reward-create .rd-types .type-disable { background:#f4f4f4;  color:#c5c5c5;cursor: default;}
+.reward-create .rd-types .type-check { background:#5d91c7; border:1px solid #006795; color:#fff; }
+.reward-create .rd-types .type i { display:block; margin:17px auto 7px; width:24px; height:24px; background:url(./../../reward/images/reward_ico.png) no-repeat; }
+.reward-create .rd-types .type i.type-ico-show { background-position:-65px -13px; }
+.reward-create .rd-types .type i.type-ico-pin { background-position:-65px -84px; }
+.reward-create .rd-types .type i.type-ico-baccarat { background-position:-65px -49px; }
+.reward-create .rd-types .type i.type-ico-phone { background-position:-68px -120px; }
+.reward-create .rd-types .type i.type-ico-tian { background-position:-65px -155px; }
+.reward-create .rd-types .type i.type-ico-wan { background-position:-14px -13px; }
+.reward-create .rd-types .type i.type-ico-outline { background-position:-14px -49px; }
+.reward-create .rd-types .type i.type-ico-score { background-position:-14px -85px; }
+.reward-create .rd-types .type-check i.type-ico-show { background-position:-115px -13px; }
+.reward-create .rd-types .type-check i.type-ico-pin { background-position:-115px -84px; }
+.reward-create .rd-types .type-check i.type-ico-baccarat { background-position:-115px -49px; }
+.reward-create .rd-types .type-check i.type-ico-phone { background-position:-115px -120px; }
+.reward-create .rd-types .type-check i.type-ico-tian { background-position:-115px -155px; }
+.reward-create .rd-types .type-check i.type-ico-wan { background-position:-14px -230px; }
+.reward-create .rd-types .type-check i.type-ico-outline { background-position:-14px -268px; }
+.reward-create .rd-types .type-check i.type-ico-score { background-position:-14px -302px; }
+
+.reward-create .rd-types .type-disable i.type-ico-show { background-position:-115px -13px; }
+.reward-create .rd-types .type-disable i.type-ico-pin { background-position:-115px -84px; }
+.reward-create .rd-types .type-disable i.type-ico-baccarat { background-position:-115px -49px; }
+.reward-create .rd-types .type-disable i.type-ico-phone { background-position:-115px -120px; }
+.reward-create .rd-types .type-disable i.type-ico-tian { background-position:-115px -155px; }
+.reward-create .rd-types .type-disable i.type-ico-wan { background-position:-14px -121px; }
+.reward-create .rd-types .type-disable i.type-ico-outline { background-position:-14px -160px; }
+.reward-create .rd-types .type-disable i.type-ico-score { background-position:-14px -194px; }
+.reward-create .rd-preview { width:285px; height: 567px; }
+.reward-create .rd-preview img { display:block; width:258px; }
+.reward-create .rd-btn { width:132px; }

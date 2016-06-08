@@ -1,0 +1,138 @@
+<div class="reward-detail reward-detail-pin">
+	<div class="zs-bar tc">
+		<a [routerLink]="['/']" class="zs-back"></a>
+		{{info?.cRPName}}
+		<span class="pull-right state-btn" [class.state-btn-stop]="info?.cRPStatus!=1" (click)="onState()">{{info?.cRPStatus==1?'发放中':'暂停中'}}</span>
+		<a class="pull-right del-btn" (click)="onDelete()"></a>
+		<a class="pull-right edit-btn" *ngIf="!info?.cRPExchangeType" [routerLink]="['/show/edit',{id:id,state:info?.cRPStatus}]"></a>
+		<a class="pull-right edit-btn" *ngIf="info?.cRPExchangeType" [routerLink]="['/baccarat/edit',{id:id,state:info?.cRPStatus}]"></a>
+	</div>
+	<div class="rd-main">
+		<div class="rx-col">
+			<div class="zs-border rx-main">
+				<h1>明细查询</h1>
+				<div class="rx-search re-rule">
+					<div class="rx-condition">
+						<div class="rx-cond-label">发放日期</div>
+						<div class="th-datepicker-block re-rule-show">
+							<div class="rd-btn" [class.active]="prizesParams.range=='-1'" (click)="onSetRange('-1')">全部</div>
+							<div class="s-input tc th-datepicker-range" (click)="onShowDate($event)" >
+								<input type="text" readonly  name="name" class="inputtxt" [value]="(prizesParams.startDate||'')+'~'+(prizesParams.endDate||0)" style="width:100%" value="">
+								<div class="tc th-datepicker-tip" (click)="$event.stopPropagation()" *ngIf="dateShow" >
+									<div class="th-datepicker" >
+										<datepicker [ngModel]="prizesParams.startDate" (ngModelChange)="prizesParams.startDate = moment($event)"  [showWeeks]="true"></datepicker>
+									</div>
+									<div class="th-datepicker">
+										<datepicker [ngModel]="prizesParams.endDate" (ngModelChange)="prizesParams.endDate = moment($event)" [showWeeks]="true"></datepicker>
+									</div>
+								</div>
+								<div *ngIf="timeError" style="height: 30px;line-height: 30px;" class="text-danger">结束时间大于开始时间</div>
+							</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='7'" (click)="onSetRange('7')">本周</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='30'" (click)="onSetRange('30')">本月</div>
+							<div class="rd-btn" [class.active]="prizesParams.range=='90'" (click)="onSetRange('90')">本季度</div>
+							<div class="rd-btn" [class.active]="prizesParams.range==='currentYear'" (click)="onSetRange('currentYear')">本年度</div>
+							<div class="rd-btn" [class.active]="prizesParams.range==='nextYear'" (click)="onSetRange('nextYear')">下年度</div>
+						</div>
+					</div>
+
+					<div class="rx-condition">
+						<div class="rx-cond-label">关联项目</div>
+						<div>
+							<div class="s-input">
+								<select [(ngModel)]="prizesParams.projectId">
+									<option [value]="pl.cPId" *ngFor="let pl of projectsList">{{pl.cPName}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="rx-cond-op">
+						<button class="rd-btn" (click)="onSearch()">查找</button>
+					</div>
+				</div>
+				<div class="rx-list">
+					<table class="table">
+						<caption>
+							数据列表
+							<a target="_blank" [href]="onDownload()" class="zs-btn-export fr">导出数据</a>
+						</caption>
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>发放时间</th>
+								<th colspan="2">发放来源
+									<div class="zs-b-des">
+										<i></i>
+										<div>
+											此处显示的是获奖链接的原始部署对象，如门店、员工或商品。
+										</div>
+									</div>
+								</th>
+								<th>获奖手机号</th>
+							</tr>
+						</thead>
+						<tbody *ngIf="showList">
+							<tr *ngFor="let psl of showList;let i = index;">
+								<td>{{i+1}}</td>
+								<td>{{moment(psl.cRSendTime,'YYYY-MM-DD HH:mm')}}</td>
+								<td>{{psl.groupName}}</td>
+								<td>{{psl.cREntityName}}</td>
+								<td>{{psl.cRMobile}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="rx-list-empty tc c-pink re-hide" *ngIf="!showList?.length">
+						未查找到有效数据
+					</div>
+					<pagination (pageChanged)="pageChanged($event)" [totalItems]="pageCount" [(ngModel)]="currentPage" [itemsPerPage]="pageSize" class="pagination-sm"
+                [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event" firstText="首页" lastText="结束页" previousText="上一页" nextText="下一页"></pagination>
+				</div>
+			</div>
+			<div class="zs-border rx-side">
+				<div class="s-header tc">
+					<h1>{{info?.cRPName}}</h1>
+					<p>创建时间<span>{{moment(info?.cRPCreateDate)}}</span></p>
+				</div>
+				<div class="s-items">
+					<div class="s-item" *ngFor="let tl of totalList">
+						<div>
+							<span>{{info?.cRPExchangeType?tl.cRPDName+'数量':'计划发放总量'}}</span>
+							<span class="c-blue">{{tl.totalNum}}</span>
+							<!-- <span class="s-ico  s-ico-add" (click)="tl.addTotalShow=!tl.addTotalShow"></span> -->
+						</div>
+						<!-- <div class="add-total-block" *ngIf="tl.addTotalShow">
+              <h5>输入需要新增的投放量</h5>
+              <input type="text" style="width:100px;margin-right:10px;" autofocus="autofocus" class="inputtxt input-157" placeholder="1-100,000的数字" [(ngModel)]="tl.additionalNum" (keyup)="onEnterAddTotal($event,tl)">
+                <a class="rd-btn-inline" style="width:40px;" (click)="onAddTotal(tl)">确认</a>
+                <a class="rd-btn-link-inline" (click)="tl.additionalNum = '';tl.addTotalShow = 0;tl.addStatus = 0;tl.additionalNumError = 0;">取消</a>
+            </div>
+            <div class="alert alert-success add-total-tip" *ngIf="tl.addStatus==1">
+              新增成功!
+            </div>
+            <div class="alert alert-danger add-total-tip" *ngIf="tl.addStatus==2">
+              新增失败!
+            </div>
+						<div class="alert alert-danger add-total-tip" *ngIf="tl.additionalNumError">
+							输入不符合规则,请输入1~100,000的整数
+						</div> -->
+						<div>
+							<span>已发放总量</span>
+							<span class="c-green">{{tl.senderNum}}</span>
+							<a class="s-ico s-ico-down" target="_blank" [href]="onDoneDownload(tl.cRPDId)"></a>
+						</div>
+					</div>
+				</div>
+				<div class="s-rel">
+					<div class="s-rel-title">当前项目关联</div>
+					<div>
+						<a *ngFor="let cpl of curProjectsList">{{cpl.cPName}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rd-footer tc">
+			2006-2016 All rights reserved 上海皓煦数据技术有限公司 沪ICP备08012157号-5
+		</div>
+	</div>
+
+</div>

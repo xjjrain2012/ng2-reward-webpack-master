@@ -1,0 +1,58 @@
+
+.reward-pin .re-convert { margin-bottom:20px; }
+.reward-pin .re-convert .advance { margin:15px 0 ; }
+.reward-pin .re-convert .advance .re-tip { margin-bottom:0; }
+.reward-pin .advance .re-tip { margin: 13px 0 16px 0; }
+.reward-pin .re-convert .re-form-field { padding-left:85px; }
+.reward-pin .re-convert .re-form-field .re-label { width:85px; }
+.reward-view{
+  background: url(./../../reward/images/coupon_normal.png);
+  display: inline-block;
+  width: 232px;
+  height: 84px;
+  position: absolute;
+  bottom: 250px;
+  left: 28px;
+}
+.reward-title{
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  color:#fff;
+  font-size: 22px;
+}
+.reward-sub-title{
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color:#fff;
+  font-size: 16px;
+}
+.reward-code-title{
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color:#fff;
+  font-size: 16px;
+}
+.reward-time-title{
+  height: 14px;
+  line-height: 14px;
+  text-align: center;
+  color:#fff;
+  font-size: 12px;
+}
+.reward-desc-title{
+  position: absolute;
+  top: 380px;
+  left: 28px;
+  color: #888;
+  width: 232px;
+  height: 95px;
+  /*text-align: center;*/
+  overflow: auto;
+}
+.th-datepicker-block .th-datepicker-range{position:relative}.th-datepicker-block .th-datepicker-tip{position:absolute;width:650px;z-index:2}.th-datepicker-block .th-datepicker{display:inline-block;width:320px;min-height:270px}.re-rule .re-rule-custom:after{display:block;position:absolute;content:'';width:16px;height:14px;background:url(./../../reward/images/reward_ico.png) no-repeat -164px -282px;top:5px;left:220px;z-index:1}
+.re-form .re-upload-op input[type='file']{
+  width: 62px;
+}
